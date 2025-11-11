@@ -1,0 +1,97 @@
+[build]
+  command = "npm run build"
+  publish = "dist/public"
+
+# Redirects para forçar HTTPS e remover www
+[[redirects]]
+  from = "http://techdio.com/*"
+  to = "https://techdio.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.techdio.com/*"
+  to = "https://techdio.com/:splat"
+  status = 301
+  force = true
+
+# SPA redirect - todas as rotas retornam index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers de segurança e performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security Headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    
+    # Performance
+    X-DNS-Prefetch-Control = "on"
+    
+    # CORS (se necessário no futuro)
+    Access-Control-Allow-Origin = "*"
+
+# Cache agressivo para assets estáticos
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache moderado para imagens
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Sem cache para HTML
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Plugin de otimização de imagens do Netlify
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+# Variáveis de ambiente (exemplo - configurar no Netlify UI)
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"

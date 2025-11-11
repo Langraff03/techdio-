@@ -1,0 +1,14 @@
+# robots.txt para TECHDIO
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://techdio.com/sitemap.xml
+
+# Crawl-delay para respeitar o servidor
+Crawl-delay: 1
+
+# Bloquear acesso a arquivos sensíveis
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /dist/
