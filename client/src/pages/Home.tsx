@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { APP_LOGO } from "@/const";
 import GlassCard from "@/components/GlassCard";
 import ScrollReveal from "@/components/ScrollReveal";
+import StaggerContainer from "@/components/animations/StaggerContainer";
 import BackgroundPattern from "@/components/BackgroundPattern";
 import FloatingParticles from "@/components/FloatingParticles";
 import PremiumAreaCard from "@/components/PremiumAreaCard";
@@ -83,7 +84,7 @@ export default function Home() {
 
           <div className="flex items-center gap-4">
             <Button
-              className="hidden md:inline-flex gradient-primary text-white font-bold shadow-lg hover:shadow-premium-lg hover:scale-105 transition-all duration-300 glow-blue"
+              className="btn-shine hidden md:inline-flex gradient-primary text-white font-bold shadow-lg hover:shadow-premium-lg hover:scale-105 transition-all duration-300 glow-blue"
               size="lg"
               onClick={openWhatsApp}
             >
@@ -115,7 +116,7 @@ export default function Home() {
                 </button>
               ))}
               <Button
-                className="w-full gradient-primary text-white font-bold mt-2"
+                className="btn-shine w-full gradient-primary text-white font-bold mt-2"
                 onClick={openWhatsApp}
               >
                 Solicitar Orçamento
@@ -139,28 +140,28 @@ export default function Home() {
               {/* Left Content */}
               <div className="text-white space-y-6 md:space-y-10 animate-fade-in-up">
                 {/* Premium Badge */}
-                <div className="inline-flex items-center gap-2 px-6 py-3 glass border border-white/30 rounded-full backdrop-blur-xl shadow-lg">
+                <div className="inline-flex items-center gap-2 px-6 py-3 glass border border-white/30 rounded-full backdrop-blur-xl shadow-lg badge-glow">
                   <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
                   <span className="text-base font-bold text-white tracking-wide">ENGENHARIA DE PRECISÃO</span>
                 </div>
                 
                 {/* Main Heading - More Impact */}
                 <div className="space-y-2 md:space-y-4">
-                  <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight">
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black title-display">
                     Tecnologia
                   </h1>
-                  <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight">
-                    <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black title-display">
+                    <span className="animated-gradient-text">
                       Integrada
                     </span>
                   </h1>
-                  <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight">
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black title-display">
                     à Saúde
                   </h1>
                 </div>
                 
                 {/* Subtitle with more personality */}
-                <p className="text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl font-light">
+                <p className="text-lg md:text-xl lg:text-2xl text-secondary body-text-large max-w-2xl font-light">
                   Calibração, manutenção e consultoria de equipamentos clínicos com
                   <span className="font-semibold text-cyan-300"> qualidade excepcional</span> e
                   <span className="font-semibold text-cyan-300"> tecnologia de ponta</span>.
@@ -170,7 +171,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4 md:gap-5 pt-4 md:pt-6">
                   <Button
                     size="lg"
-                    className="gradient-primary text-white font-bold text-lg px-8 py-6 shadow-2xl hover:shadow-premium-lg hover:scale-105 transition-all duration-300 glow-blue group"
+                    className="btn-shine gradient-primary text-white font-bold text-lg px-8 py-6 shadow-2xl hover:shadow-premium-lg hover:scale-105 transition-all duration-300 glow-blue group"
                     onClick={openWhatsApp}
                   >
                     Solicitar Orçamento
@@ -254,12 +255,12 @@ export default function Home() {
             {/* Header Section */}
             <ScrollReveal>
               <div className="text-center mb-12 md:mb-16">
-                <div className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-xl mb-6 md:mb-8">
+                <div className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-xl mb-6 md:mb-8 badge-glow">
                   <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
                   <span className="text-sm font-black text-white tracking-wider uppercase">Sobre a TECHDIO</span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-4 md:mb-6 leading-tight text-white">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6 title-section text-primary">
                   Liderança em<br />
                   <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
                     Tecnologia Médica
@@ -270,7 +271,7 @@ export default function Home() {
                   <div className="h-2 w-32 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"></div>
                 </div>
 
-                <p className="text-lg md:text-xl lg:text-2xl text-white/80 leading-relaxed font-light max-w-4xl mx-auto px-4">
+                <p className="text-lg md:text-xl lg:text-2xl text-secondary body-text-large font-light max-w-4xl mx-auto px-4">
                   Especialistas em tecnologia integrada à saúde, oferecendo
                   <span className="font-semibold text-cyan-300"> soluções completas</span> em calibração,
                   manutenção preventiva e preditiva de equipamentos
@@ -279,28 +280,30 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            {/* Stats Grid - DARK VERSION */}
+            {/* Stats Grid - DARK VERSION with Stagger */}
             <ScrollReveal delay={100}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-16 max-w-6xl mx-auto">
+              <StaggerContainer speed="normal" className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-16 max-w-6xl mx-auto">
                 {[
                   { number: '15+', label: 'Anos de Experiência', desc: 'Mestrado e especialização', icon: '🏆' },
                   { number: 'ISO', label: 'Certificação', desc: 'Padrões internacionais', icon: '✓' },
                   { number: '500+', label: 'Equipamentos', desc: 'Calibrados anualmente', icon: '⚙️' }
                 ].map((stat, i) => (
-                  <div key={i} className="group">
-                    <div className="bg-white/5 backdrop-blur-xl p-6 md:p-8 hover-3d rounded-2xl md:rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 transition-all duration-500 relative overflow-hidden">
+                  <ScrollReveal key={i} variant="scaleIn" delay={i * 0.1}>
+                    <div className="group">
+                    <div className="glass-medium elevation-2 hover:elevation-3 p-6 md:p-8 rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 transition-all duration-500 relative overflow-hidden magnetic-card">
                       <div className="absolute top-0 right-0 text-8xl opacity-5">{stat.icon}</div>
                       <div className="relative z-10">
                         <div className="text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
                           {stat.number}
                         </div>
-                        <div className="text-lg md:text-xl font-bold text-white mb-2">{stat.label}</div>
-                        <div className="text-xs md:text-sm text-white/60 font-medium">{stat.desc}</div>
+                        <div className="text-lg md:text-xl font-bold text-primary mb-2">{stat.label}</div>
+                        <div className="text-xs md:text-sm text-muted font-medium">{stat.desc}</div>
                       </div>
                     </div>
-                  </div>
+                    </div>
+                  </ScrollReveal>
                 ))}
-              </div>
+              </StaggerContainer>
             </ScrollReveal>
 
             {/* Main Content Grid - DARK VERSION - Transform to Accordion on Mobile */}
@@ -308,16 +311,16 @@ export default function Home() {
               {/* Desktop: Grid Layout */}
               <div className="hidden lg:grid lg:grid-cols-2 gap-8">
                 <ScrollReveal delay={200}>
-                  <div className="bg-white/5 backdrop-blur-xl p-10 hover-3d rounded-3xl border-2 border-white/10 hover:border-blue-500/50 group transition-all duration-500 h-full">
+                  <div className="glass-medium elevation-2 hover:elevation-3 p-10 rounded-3xl border-2 border-white/10 hover:border-blue-500/50 group transition-all duration-500 h-full magnetic-card">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-3xl shadow-xl group-hover:scale-110 transition-transform">
                         🎓
                       </div>
-                      <h3 className="text-3xl font-black text-white group-hover:text-cyan-400 transition-colors">
+                      <h3 className="text-3xl font-black text-primary group-hover:text-cyan-400 transition-colors title-card">
                         Mestrado em Inovações Tecnológicas
                       </h3>
                     </div>
-                    <p className="text-lg text-white/70 leading-relaxed mb-6">
+                    <p className="text-lg text-body body-text leading-relaxed mb-6">
                       Liderança com formação acadêmica de excelência pela UTFPR, trazendo conhecimento técnico e científico de ponta para cada projeto. Especialização em tecnologia aplicada à saúde e metrologia avançada.
                     </p>
                     <div className="flex flex-wrap gap-3">
@@ -332,16 +335,16 @@ export default function Home() {
                 </ScrollReveal>
 
                 <ScrollReveal delay={300}>
-                  <div className="bg-white/5 backdrop-blur-xl p-10 hover-3d rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 group transition-all duration-500 h-full">
+                  <div className="glass-medium elevation-2 hover:elevation-3 p-10 rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 group transition-all duration-500 h-full magnetic-card">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-600 to-blue-500 flex items-center justify-center text-3xl shadow-xl group-hover:scale-110 transition-transform">
                         ⭐
                       </div>
-                      <h3 className="text-3xl font-black text-white group-hover:text-cyan-400 transition-colors">
+                      <h3 className="text-3xl font-black text-primary group-hover:text-cyan-400 transition-colors title-card">
                         Conformidade e Excelência
                       </h3>
                     </div>
-                    <p className="text-lg text-white/70 leading-relaxed mb-6">
+                    <p className="text-lg text-body body-text leading-relaxed mb-6">
                       Certificação ISO/IEC 17025 e compliance com padrões internacionais de qualidade, garantindo processos auditados e rastreáveis. Compromisso com excelência operacional em cada serviço prestado.
                     </p>
                     <div className="flex flex-wrap gap-3">
@@ -410,9 +413,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Additional Value Props - DARK VERSION */}
+            {/* Additional Value Props - DARK VERSION with Stagger */}
             <ScrollReveal delay={400}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
+              <StaggerContainer speed="fast" className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
                 {[
                   {
                     icon: '🔬',
@@ -430,17 +433,19 @@ export default function Home() {
                     desc: 'Sistema completo de rastreabilidade e documentação técnica detalhada'
                   }
                 ].map((item, i) => (
-                  <div key={i} className="bg-white/5 backdrop-blur-xl p-6 md:p-8 rounded-2xl md:rounded-3xl border-2 border-white/10 hover:border-purple-500/50 hover-3d group transition-all duration-500">
+                  <ScrollReveal key={i} variant="fadeInUp" delay={i * 0.1}>
+                    <div className="glass-medium elevation-2 hover:elevation-3 p-6 md:p-8 rounded-3xl border-2 border-white/10 hover:border-purple-500/50 group transition-all duration-500 magnetic-card">
                     <div className="text-4xl md:text-5xl mb-3 md:mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
-                    <h4 className="text-lg md:text-xl font-black text-white mb-2 md:mb-3 group-hover:text-purple-400 transition-colors">
+                    <h4 className="text-lg md:text-xl font-black text-primary mb-2 md:mb-3 group-hover:text-purple-400 transition-colors title-card">
                       {item.title}
                     </h4>
-                    <p className="text-sm md:text-base text-white/70 leading-relaxed">
+                    <p className="text-sm md:text-base text-body body-text leading-relaxed">
                       {item.desc}
                     </p>
-                  </div>
+                    </div>
+                  </ScrollReveal>
                 ))}
-              </div>
+              </StaggerContainer>
             </ScrollReveal>
           </div>
         </section>
@@ -452,12 +457,12 @@ export default function Home() {
           <div className="container relative z-10">
             <ScrollReveal>
               <div className="mb-12 md:mb-16 text-center">
-                <div className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl mb-8 md:mb-10">
+                <div className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl mb-8 md:mb-10 badge-glow">
                   <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
                   <span className="text-base font-black text-white tracking-wider uppercase">Nossos Serviços</span>
                 </div>
                 
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black title-section text-primary mb-4">
                   Soluções <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Completas</span>
                 </h2>
                 <div className="w-32 h-2 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto"></div>
@@ -482,7 +487,7 @@ export default function Home() {
                 const Icon = service.icon;
                 return (
                   <ScrollReveal key={i} delay={i * 100}>
-                    <div className="bg-white/5 backdrop-blur-xl overflow-hidden p-0 group cursor-pointer rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover-3d">
+                    <div className="glass-medium elevation-2 hover:elevation-premium overflow-hidden p-0 group cursor-pointer rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 transition-all duration-500 magnetic-card">
                       <div className="relative h-64 overflow-hidden">
                         <img
                           src={service.image}
@@ -497,8 +502,8 @@ export default function Home() {
                         <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mb-4 text-white group-hover:scale-110 transition-transform duration-300 shadow-xl">
                           <Icon />
                         </div>
-                        <h3 className="text-3xl font-black mb-3 text-white group-hover:text-cyan-400 transition-colors">{service.title}</h3>
-                        <p className="text-white/70 leading-relaxed text-lg">{service.desc}</p>
+                        <h3 className="text-3xl font-black mb-3 text-primary group-hover:text-cyan-400 transition-colors title-card">{service.title}</h3>
+                        <p className="text-body leading-relaxed text-lg body-text">{service.desc}</p>
                       </div>
                     </div>
                   </ScrollReveal>
@@ -614,7 +619,7 @@ export default function Home() {
 
                       <Button
                         size="lg"
-                        className="gradient-primary text-white font-bold shadow-lg hover:shadow-premium-lg hover:scale-105 transition-all duration-300 glow-blue"
+                        className="btn-shine gradient-primary text-white font-bold shadow-lg hover:shadow-premium-lg hover:scale-105 transition-all duration-300 glow-blue"
                         onClick={openWhatsApp}
                       >
                         Solicitar Orçamento
@@ -820,19 +825,19 @@ export default function Home() {
             {/* Header Premium */}
             <ScrollReveal>
               <div className="text-center mb-12 md:mb-20">
-                <div className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl mb-8 md:mb-10">
+                <div className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl mb-8 md:mb-10 badge-glow">
                   <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
                   <span className="text-base font-black text-white tracking-wider uppercase">Áreas de Atuação</span>
                 </div>
                 
-                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-6 md:mb-8 leading-[0.9] text-white">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 md:mb-8 title-section text-primary">
                   Onde{' '}
                   <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
                     Atuamos
                   </span>
                 </h2>
                 
-                <p className="text-lg md:text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed font-light px-4">
+                <p className="text-lg md:text-xl lg:text-2xl text-secondary max-w-4xl mx-auto body-text-large font-light px-4">
                   Expertise especializada em múltiplos setores com
                   <span className="font-semibold text-cyan-300"> soluções personalizadas</span> e
                   <span className="font-semibold text-cyan-300"> certificações internacionais</span>
@@ -840,8 +845,8 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            {/* Desktop: Grid 3 colunas */}
-            <div className="hidden lg:grid lg:grid-cols-3 gap-8 max-w-[1400px] mx-auto mb-24">
+            {/* Desktop: Grid 3 colunas with Stagger */}
+            <StaggerContainer speed="normal" className="hidden lg:grid lg:grid-cols-3 gap-8 max-w-[1400px] mx-auto mb-24">
               {[
                 {
                   title: "Saúde Humana & Hospitalar",
@@ -901,11 +906,9 @@ export default function Home() {
                   ]
                 }
               ].map((area, i) => (
-                <ScrollReveal key={i} delay={i * 150}>
-                  <PremiumAreaCard {...area} />
-                </ScrollReveal>
+                <PremiumAreaCard key={i} {...area} />
               ))}
-            </div>
+            </StaggerContainer>
 
             {/* Mobile: Carousel */}
             <div className="lg:hidden mb-16 px-4">
@@ -995,8 +998,8 @@ export default function Home() {
               </Carousel>
             </div>
 
-            {/* Stats Section - Animado e Destacado */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
+            {/* Stats Section - Animado e Destacado with Stagger */}
+            <StaggerContainer speed="fast" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
               {[
                 {
                   value: "500+",
@@ -1027,11 +1030,9 @@ export default function Home() {
                   gradient: "linear-gradient(135deg, #F59E0B 0%, #EF4444 100%)"
                 }
               ].map((stat, i) => (
-                <ScrollReveal key={i} delay={400 + (i * 100)}>
-                  <AnimatedStatsCard {...stat} delay={i * 100} />
-                </ScrollReveal>
+                <AnimatedStatsCard key={i} {...stat} delay={i * 100} />
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
@@ -1046,18 +1047,18 @@ export default function Home() {
           <div className="container relative z-10">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <div className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl mb-10">
+                <div className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl mb-10 badge-glow">
                   <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
                   <span className="text-base font-black text-white tracking-wider uppercase">Entre em Contato</span>
                 </div>
                 
-                <h2 className="text-5xl md:text-7xl font-black mb-6 text-white">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 title-section text-primary">
                   Vamos <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Conversar?</span>
                 </h2>
               </div>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
+            <StaggerContainer speed="normal" className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
               {[
                 { icon: Phone, label: "Telefone", value: "(44) 99701-4422", href: "tel:+5544997014422" },
                 { icon: Mail, label: "E-mail", value: "techdio.qualidade@gmail.com", href: "mailto:techdio.qualidade@gmail.com" },
@@ -1070,12 +1071,12 @@ export default function Home() {
                       href={contact.href}
                       className="block"
                     >
-                      <div className="bg-white/5 backdrop-blur-xl p-8 text-center rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover-3d group">
+                      <div className="glass-strong elevation-2 hover:elevation-3 p-8 text-center rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 transition-all duration-500 magnetic-card group">
                         <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:scale-110 transition-transform">
                           <Icon className="w-8 h-8 text-white" />
                         </div>
-                        <p className="text-sm font-bold text-white/60 mb-2">{contact.label}</p>
-                        <p className="text-lg font-black text-white">
+                        <p className="text-sm font-bold text-muted mb-2">{contact.label}</p>
+                        <p className="text-lg font-black text-primary">
                           {contact.value}
                         </p>
                       </div>
@@ -1083,17 +1084,17 @@ export default function Home() {
                   </ScrollReveal>
                 );
               })}
-            </div>
+            </StaggerContainer>
 
             <ScrollReveal delay={300}>
-              <div className="bg-white/5 backdrop-blur-xl p-12 text-center max-w-3xl mx-auto rounded-3xl border-2 border-white/10">
-                <p className="text-xl text-white/90 mb-8 font-semibold">
+              <div className="glass-strong elevation-premium p-12 text-center max-w-3xl mx-auto rounded-3xl border-2 border-white/10">
+                <p className="text-xl text-secondary mb-8 font-semibold body-text-large">
                   Pronto para transformar sua operação? <br className="hidden sm:block" />
                   Solicite um diagnóstico gratuito.
                 </p>
                 <Button
                   size="lg"
-                  className="gradient-primary text-white font-black shadow-xl hover:shadow-premium-lg hover:scale-105 transition-all duration-300 glow-blue px-12"
+                  className="btn-shine gradient-primary text-white font-black shadow-xl hover:shadow-premium-lg hover:scale-105 transition-all duration-300 glow-blue px-12"
                   onClick={openWhatsApp}
                 >
                   Solicitar Orçamento

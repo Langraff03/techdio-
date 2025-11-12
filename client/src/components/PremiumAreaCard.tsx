@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface PremiumAreaCardProps {
   title: string;
@@ -29,15 +31,36 @@ export default function PremiumAreaCard({
   icon,
   accentColor
 }: PremiumAreaCardProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl h-[500px] md:h-[600px] transition-all duration-500 hover:-translate-y-4">
+    <motion.div
+      className="group relative overflow-hidden rounded-2xl md:rounded-3xl h-[500px] md:h-[600px]"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{
+        duration: prefersReducedMotion ? 0.01 : 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={{
+        y: prefersReducedMotion ? 0 : -16,
+        transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }
+      }}
+      style={{ willChange: 'transform, opacity' }}
+    >
       {/* Background Image with Overlay */}
       {image ? (
-        <div className="absolute inset-0">
-          <img 
-            src={image} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.img
+            src={image}
+            className="w-full h-full object-cover"
             alt={title}
+            initial={{ scale: 1.1 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: prefersReducedMotion ? 0.01 : 1.2, ease: 'easeOut' }}
+            whileHover={{ scale: 1.05 }}
+            style={{ willChange: 'transform' }}
           />
           {/* Gradient Overlay - mais forte */}
           <div 
@@ -79,39 +102,67 @@ export default function PremiumAreaCard({
         {/* Bottom Section - Info */}
         <div className="space-y-6">
           {/* Icon Container */}
-          <div className="inline-flex">
-            <div
-              className="w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
-              style={{ 
+          <motion.div
+            className="inline-flex"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            <motion.div
+              className="w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-xl"
+              style={{
                 background: 'rgba(255, 255, 255, 0.15)',
                 border: '1px solid rgba(255, 255, 255, 0.2)'
               }}
+              whileHover={{
+                scale: 1.1,
+                rotate: 6,
+                transition: { duration: 0.3 }
+              }}
             >
-              <div className="transform transition-transform duration-500 group-hover:scale-110 [&>svg]:w-8 [&>svg]:h-8 md:[&>svg]:w-10 md:[&>svg]:h-10">
+              <motion.div
+                className="[&>svg]:w-8 [&>svg]:h-8 md:[&>svg]:w-10 md:[&>svg]:h-10"
+                whileHover={{ scale: 1.1 }}
+              >
                 {icon}
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
           {/* Title */}
-          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight transition-transform duration-500 group-hover:translate-x-2">
+          <motion.h3
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             {title}
-          </h3>
+          </motion.h3>
 
           {/* Stats - Número grande */}
-          <div className="flex items-baseline gap-2 md:gap-3">
+          <motion.div
+            className="flex items-baseline gap-2 md:gap-3"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+          >
             <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight">
               {stats}
             </div>
             <div className="text-base md:text-lg lg:text-xl font-bold opacity-90">
               {statsLabel}
             </div>
-          </div>
+          </motion.div>
 
           {/* Description */}
-          <p className="text-base md:text-lg lg:text-xl leading-relaxed opacity-95 font-medium">
+          <motion.p
+            className="text-base md:text-lg lg:text-xl leading-relaxed opacity-95 font-medium"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 0.95, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
             {description}
-          </p>
+          </motion.p>
         </div>
       </div>
 
@@ -126,6 +177,6 @@ export default function PremiumAreaCard({
           maskComposite: 'exclude'
         }}
       />
-    </div>
+    </motion.div>
   );
 }

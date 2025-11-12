@@ -68,6 +68,21 @@
   --chart-5: var(--blue-800);
   --radius: 0.75rem;
   
+  /* Design Tokens - Spacing System */
+  --spacing-card-mobile: 1.5rem;
+  --spacing-card-tablet: 2rem;
+  --spacing-card-desktop: 2.5rem;
+  --spacing-section-mobile: 4rem;
+  --spacing-section-tablet: 6rem;
+  --spacing-section-desktop: 8rem;
+  
+  /* Design Tokens - Typography Scale */
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-body: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.60);
+  --text-disabled: rgba(255, 255, 255, 0.40);
+  
   /* Light Theme */
   --background: #FFFFFF;
   --foreground: #1E293B;
@@ -295,6 +310,59 @@
   }
 }
 
+/* ============================================
+   ADVANCED VISUAL EFFECTS - CSS Only
+   Zero JS, 60fps guaranteed
+   ============================================ */
+
+/* 1. Shine Effect Animation */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  20%, 100% {
+    left: 100%;
+  }
+}
+
+/* 2. Gradient Text Animation */
+@keyframes gradient-text {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 3. Glow Pulse Animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(6, 182, 212, 0.4),
+      0 0 40px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(6, 182, 212, 0.6),
+      0 0 60px rgba(6, 182, 212, 0.3),
+      0 0 80px rgba(6, 182, 212, 0.1);
+  }
+}
+
+/* 4. Gradient Border Animation */
+@keyframes gradient-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 @layer components {
   /**
    * Custom container utility that centers content and adds responsive padding.
@@ -347,6 +415,28 @@
     background: rgba(30, 41, 59, 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Glass Variants - Improved Contrast */
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-medium {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  .glass-subtle {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
@@ -404,6 +494,30 @@
     box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
   }
 
+
+  /* Elevation System */
+  .elevation-1 {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .elevation-2 {
+    box-shadow: 
+      0 4px 8px rgba(0, 0, 0, 0.12),
+      0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  
+  .elevation-3 {
+    box-shadow: 
+      0 8px 16px rgba(0, 0, 0, 0.15),
+      0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .elevation-premium {
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 0 40px rgba(37, 99, 235, 0.2);
+  }
   .glow-purple {
     box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
   }
@@ -456,6 +570,159 @@
     background-size: 30px 30px;
   }
 
+  
+  /* Typography Utilities - Semantic Text Colors */
+  .text-primary {
+    color: var(--text-primary);
+  }
+  
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  .text-body {
+    color: var(--text-body);
+  }
+  
+  .text-muted {
+    color: var(--text-muted);
+  }
+  
+  /* Typography Scale Classes */
+  .title-display {
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  
+  .title-section {
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  
+  .title-card {
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+  }
+  
+  .body-text {
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+  
+  .body-text-large {
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+  }
+  
+  /* Hover Effects - Improved */
+  .hover-scale {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02) translateY(-2px);
+  }
+  
+  .hover-scale:active {
+    transform: scale(0.98);
+  
+  /* ============================================
+     ADVANCED VISUAL EFFECTS
+     ============================================ */
+  
+  /* 1. Shine Effect for Buttons */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shine 3s ease-in-out infinite;
+  }
+  
+  /* 2. Animated Gradient Text */
+  .animated-gradient-text {
+    background: linear-gradient(
+      90deg,
+      #22D3EE,
+      #3B82F6,
+      #8B5CF6,
+      #22D3EE
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-text 4s ease infinite;
+  }
+  
+  /* 3. Badge with Glow Pulse */
+  .badge-glow {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+  
+  /* 4. Magnetic Hover Effect */
+  .magnetic-card {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .magnetic-card:hover {
+    transform: scale(1.03) rotate(0.5deg);
+  }
+  
+  .magnetic-card:hover .card-content {
+    transform: translateY(-5px);
+  }
+  
+  .magnetic-card:hover .card-icon {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  
+  /* 5. Gradient Border Animation */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(
+      45deg,
+      #2563EB,
+      #06B6D4,
+      #8B5CF6,
+      #2563EB
+    );
+    background-size: 300% 300%;
+    animation: gradient-rotate 6s ease infinite;
+    padding: 2px;
+    border-radius: 1.5rem;
+  }
+  
+  .gradient-border-inner {
+    background: var(--blue-950);
+    border-radius: 1.4rem;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-shine::before,
+    .animated-gradient-text,
+    .badge-glow,
+    .gradient-border {
+      animation: none !important;
+    }
+  }
+  }
   .bg-grid {
     background-image:
       linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
