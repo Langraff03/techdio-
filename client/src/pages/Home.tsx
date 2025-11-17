@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Menu, X, ArrowRight, Check, Activity, Heart, Cpu, TrendingUp, Shield, Users, Instagram, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { APP_LOGO } from "@/const";
 import GlassCard from "@/components/GlassCard";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -10,14 +11,16 @@ import FloatingParticles from "@/components/FloatingParticles";
 import PremiumAreaCard from "@/components/PremiumAreaCard";
 import AnimatedStatsCard from "@/components/AnimatedStatsCard";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import MetrologyInfoCard from "@/components/MetrologyInfoCard";
+import PartnersSection from "@/components/PartnersSection";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import {
-  HealthCareIcon,
-  VeterinaryIcon,
-  IndustryIcon,
+  ElectromedicalIcon,
+  PhysiotherapyIcon,
+  AestheticIcon,
 } from "@/components/icons/CustomIcons";
 
 // Custom SVG Icons for services
@@ -40,8 +43,16 @@ const CalibrationIcon = () => (
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [, setLocation] = useLocation();
 
   const scrollToSection = (id: string) => {
+    // Se for a página de equipamentos, redirecionar
+    if (id === 'equipamentos') {
+      setLocation('/equipamentos');
+      setMobileMenuOpen(false);
+      return;
+    }
+    
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -63,14 +74,14 @@ export default function Home() {
       
       {/* Header Branco - Não fixo */}
       <header className="bg-white border-b border-gray-200 shadow-sm">
-        <div className="container flex items-center justify-between h-20 md:h-24">
+        <div className="container flex items-center justify-between h-20 md:h-28">
           <div className="flex items-center gap-3">
-            <img src={APP_LOGO} alt="TECHDIO Logo" className="h-14 sm:h-16 md:h-20 w-auto drop-shadow-md" />
+            <img src={APP_LOGO} alt="TECHDIO Logo" className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto drop-shadow-md" />
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {['sobre', 'servicos', 'areas', 'contato'].map((item) => (
+            {['sobre', 'servicos', 'areas', 'equipamentos', 'contato'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
@@ -106,7 +117,7 @@ export default function Home() {
         {mobileMenuOpen && (
           <nav className="md:hidden bg-white border-t border-gray-200 shadow-lg">
             <div className="container py-4 flex flex-col gap-4">
-              {['sobre', 'servicos', 'areas', 'contato'].map((item) => (
+              {['sobre', 'servicos', 'areas', 'equipamentos', 'contato'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
@@ -631,6 +642,62 @@ export default function Home() {
               </div>
             </section>
           ))}
+          
+          {/* Seção Expandida de Metrologia - Desktop Only */}
+          <section className="py-16 md:py-24 bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
+            <BackgroundPattern pattern="dots" className="opacity-5" />
+            
+            <div className="container relative z-10">
+              <ScrollReveal>
+                <div className="text-center mb-12 md:mb-16">
+                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-xl mb-8 badge-glow">
+                    <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
+                    <span className="text-base font-black text-white tracking-wider uppercase">Expertise Metrológica</span>
+                  </div>
+                  
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
+                    Metrologia <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Avançada</span>
+                  </h2>
+                  <div className="w-32 h-2 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto mb-6"></div>
+                  
+                  <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
+                    Combinamos ciência metrológica avançada com gestão estratégica de instrumentos
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <MetrologyInfoCard
+                  icon="🔬"
+                  title="Metrologia Científica"
+                  description="Aplicação rigorosa de métodos científicos e estatísticos para garantir precisão absoluta e rastreabilidade completa das medições."
+                  benefits={[
+                    "Rastreabilidade ao SI (Sistema Internacional)",
+                    "Análise detalhada de incertezas",
+                    "Validação criteriosa de métodos",
+                    "Compliance com normas internacionais"
+                  ]}
+                  gradient="linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)"
+                  accentColor="#06B6D4"
+                />
+                
+                <MetrologyInfoCard
+                  icon="📋"
+                  title="Plano Metrológico"
+                  description="Gestão completa e estratégica do ciclo de vida dos seus instrumentos de medição, otimizando custos e garantindo conformidade."
+                  benefits={[
+                    "Inventário metrológico completo",
+                    "Programação inteligente de calibrações",
+                    "Controle digital de certificados",
+                    "Indicadores de qualidade e performance",
+                    "Gestão de custos otimizada"
+                  ]}
+                  gradient="linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)"
+                  accentColor="#8B5CF6"
+                />
+              </div>
+            </div>
+          </section>
         </div>
 
         {/* Mobile Version - Tabs */}
@@ -845,64 +912,64 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            {/* Desktop: Grid 3 colunas with Stagger */}
+            {/* Desktop: Grid 5 colunas with Stagger */}
             <StaggerContainer speed="normal" className="hidden lg:grid lg:grid-cols-3 gap-8 max-w-[1400px] mx-auto mb-24">
               {[
                 {
-                  title: "Saúde Humana & Hospitalar",
-                  description: "Soluções completas para hospitais, clínicas e laboratórios com certificação ANVISA e rastreabilidade total",
-                  stats: "300+",
+                  title: "Eletromédicos",
+                  description: "Equipamentos eletrônicos médico-hospitalares de alta complexidade e precisão",
+                  stats: "200+",
                   statsLabel: "Equipamentos/Ano",
                   badge: "ANVISA RDC 611/22",
                   badgeIcon: <Shield className="w-4 h-4" />,
-                  gradient: "linear-gradient(135deg, #2563EB 0%, #06B6D4 100%)",
+                  gradient: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
                   accentColor: "#2563EB",
-                  icon: <HealthCareIcon className="w-10 h-10 text-white" />,
+                  icon: <ElectromedicalIcon className="w-10 h-10 text-white" />,
                   equipment: [
                     "Autoclaves e esterilizadores",
                     "Monitores multiparamétricos",
                     "Desfibriladores e cardioversores",
                     "Bombas de infusão",
-                    "Centrífugas e incubadoras",
-                    "Balanças antropométricas"
+                    "Ventiladores pulmonares",
+                    "Bisturis elétricos"
                   ]
                 },
                 {
-                  title: "Saúde Veterinária",
-                  description: "Especialistas em calibração de equipamentos veterinários seguindo padrões internacionais de qualidade",
-                  stats: "150+",
+                  title: "Fisioterapia",
+                  description: "Equipamentos especializados em reabilitação e terapia física",
+                  stats: "80+",
                   statsLabel: "Equipamentos/Ano",
-                  badge: "Especialização Veterinária",
+                  badge: "Especialização Terapêutica",
+                  badgeIcon: <Activity className="w-4 h-4" />,
+                  gradient: "linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)",
+                  accentColor: "#06B6D4",
+                  icon: <PhysiotherapyIcon className="w-10 h-10 text-white" />,
+                  equipment: [
+                    "Ultrassom terapêutico",
+                    "Laser terapêutico",
+                    "TENS e FES",
+                    "Ondas curtas e microondas",
+                    "Turbilhão e compressas",
+                    "Estimuladores musculares"
+                  ]
+                },
+                {
+                  title: "Estética",
+                  description: "Equipamentos estéticos e dermatológicos de precisão certificados",
+                  stats: "60+",
+                  statsLabel: "Equipamentos/Ano",
+                  badge: "Certificação Estética",
                   badgeIcon: <Heart className="w-4 h-4" />,
-                  gradient: "linear-gradient(135deg, #10B981 0%, #14B8A6 100%)",
-                  accentColor: "#10B981",
-                  icon: <VeterinaryIcon className="w-10 h-10 text-white" />,
+                  gradient: "linear-gradient(135deg, #A855F7 0%, #9333EA 100%)",
+                  accentColor: "#A855F7",
+                  icon: <AestheticIcon className="w-10 h-10 text-white" />,
                   equipment: [
-                    "Autoclaves veterinárias",
-                    "Equipamentos de anestesia",
-                    "Monitores de sinais vitais",
-                    "Balanças de precisão",
-                    "Centrífugas laboratoriais",
-                    "Incubadoras e estufas"
-                  ]
-                },
-                {
-                  title: "Indústria Alimentícia",
-                  description: "Garantia de qualidade e segurança alimentar através de calibração certificada de equipamentos industriais",
-                  stats: "100+",
-                  statsLabel: "Equipamentos/Ano",
-                  badge: "ISO/IEC 17025",
-                  badgeIcon: <Cpu className="w-4 h-4" />,
-                  gradient: "linear-gradient(135deg, #F59E0B 0%, #EF4444 100%)",
-                  accentColor: "#F59E0B",
-                  icon: <IndustryIcon className="w-10 h-10 text-white" />,
-                  equipment: [
-                    "Termômetros industriais",
-                    "Balanças de alta precisão",
-                    "Medidores de pH",
-                    "Manômetros e vacuômetros",
-                    "Registradores de temperatura",
-                    "Higrômetros e termohigrômetros"
+                    "Laser dermatológico",
+                    "Radiofrequência",
+                    "Criolipólise",
+                    "Carboxiterapia",
+                    "Microagulhamento",
+                    "Peeling ultrassônico"
                   ]
                 }
               ].map((area, i) => (
@@ -922,60 +989,60 @@ export default function Home() {
                 <CarouselContent>
                   {[
                     {
-                      title: "Saúde Humana & Hospitalar",
-                      description: "Soluções completas para hospitais, clínicas e laboratórios com certificação ANVISA e rastreabilidade total",
-                      stats: "300+",
+                      title: "Eletromédicos",
+                      description: "Equipamentos eletrônicos médico-hospitalares de alta complexidade e precisão",
+                      stats: "200+",
                       statsLabel: "Equipamentos/Ano",
                       badge: "ANVISA RDC 611/22",
                       badgeIcon: <Shield className="w-4 h-4" />,
-                      gradient: "linear-gradient(135deg, #2563EB 0%, #06B6D4 100%)",
+                      gradient: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
                       accentColor: "#2563EB",
-                      icon: <HealthCareIcon className="w-10 h-10 text-white" />,
+                      icon: <ElectromedicalIcon className="w-10 h-10 text-white" />,
                       equipment: [
                         "Autoclaves e esterilizadores",
                         "Monitores multiparamétricos",
                         "Desfibriladores e cardioversores",
                         "Bombas de infusão",
-                        "Centrífugas e incubadoras",
-                        "Balanças antropométricas"
+                        "Ventiladores pulmonares",
+                        "Bisturis elétricos"
                       ]
                     },
                     {
-                      title: "Saúde Veterinária",
-                      description: "Especialistas em calibração de equipamentos veterinários seguindo padrões internacionais de qualidade",
-                      stats: "150+",
+                      title: "Fisioterapia",
+                      description: "Equipamentos especializados em reabilitação e terapia física",
+                      stats: "80+",
                       statsLabel: "Equipamentos/Ano",
-                      badge: "Especialização Veterinária",
+                      badge: "Especialização Terapêutica",
+                      badgeIcon: <Activity className="w-4 h-4" />,
+                      gradient: "linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)",
+                      accentColor: "#06B6D4",
+                      icon: <PhysiotherapyIcon className="w-10 h-10 text-white" />,
+                      equipment: [
+                        "Ultrassom terapêutico",
+                        "Laser terapêutico",
+                        "TENS e FES",
+                        "Ondas curtas e microondas",
+                        "Turbilhão e compressas",
+                        "Estimuladores musculares"
+                      ]
+                    },
+                    {
+                      title: "Estética",
+                      description: "Equipamentos estéticos e dermatológicos de precisão certificados",
+                      stats: "60+",
+                      statsLabel: "Equipamentos/Ano",
+                      badge: "Certificação Estética",
                       badgeIcon: <Heart className="w-4 h-4" />,
-                      gradient: "linear-gradient(135deg, #10B981 0%, #14B8A6 100%)",
-                      accentColor: "#10B981",
-                      icon: <VeterinaryIcon className="w-10 h-10 text-white" />,
+                      gradient: "linear-gradient(135deg, #A855F7 0%, #9333EA 100%)",
+                      accentColor: "#A855F7",
+                      icon: <AestheticIcon className="w-10 h-10 text-white" />,
                       equipment: [
-                        "Autoclaves veterinárias",
-                        "Equipamentos de anestesia",
-                        "Monitores de sinais vitais",
-                        "Balanças de precisão",
-                        "Centrífugas laboratoriais",
-                        "Incubadoras e estufas"
-                      ]
-                    },
-                    {
-                      title: "Indústria Alimentícia",
-                      description: "Garantia de qualidade e segurança alimentar através de calibração certificada de equipamentos industriais",
-                      stats: "100+",
-                      statsLabel: "Equipamentos/Ano",
-                      badge: "ISO/IEC 17025",
-                      badgeIcon: <Cpu className="w-4 h-4" />,
-                      gradient: "linear-gradient(135deg, #F59E0B 0%, #EF4444 100%)",
-                      accentColor: "#F59E0B",
-                      icon: <IndustryIcon className="w-10 h-10 text-white" />,
-                      equipment: [
-                        "Termômetros industriais",
-                        "Balanças de alta precisão",
-                        "Medidores de pH",
-                        "Manômetros e vacuômetros",
-                        "Registradores de temperatura",
-                        "Higrômetros e termohigrômetros"
+                        "Laser dermatológico",
+                        "Radiofrequência",
+                        "Criolipólise",
+                        "Carboxiterapia",
+                        "Microagulhamento",
+                        "Peeling ultrassônico"
                       ]
                     }
                   ].map((area, i) => (
@@ -1035,6 +1102,9 @@ export default function Home() {
             </StaggerContainer>
           </div>
         </section>
+
+        {/* Parceiros Section */}
+        <PartnersSection />
 
         {/* Contato Section - DARK THEME */}
         <section id="contato" className="py-16 md:py-24 lg:py-32 bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
@@ -1111,7 +1181,7 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-              <img src={APP_LOGO} alt="TECHDIO Logo" className="h-14 w-auto mb-6" />
+              <img src="/logo/logorodapé.png" alt="TECHDIO Logo" className="h-14 w-auto mb-6" />
               <p className="text-base text-white/60 font-medium leading-relaxed">
                 Tecnologia Integrada à Saúde
               </p>

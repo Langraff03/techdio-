@@ -9,6 +9,43 @@ export const HealthCareIcon = ({ className = "w-16 h-16" }: { className?: string
     <path d="M32 10L35 18L43 18L37 23L39 31L32 26L25 31L27 23L21 18L29 18L32 10Z" fill="currentColor" opacity="0.3"/>
   </svg>
 );
+// Eletromédicos - Equipamentos eletrônicos hospitalares
+export const ElectromedicalIcon = ({ className = "w-16 h-16" }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="16" y="12" width="32" height="24" rx="2" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <path d="M24 20L28 26L36 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <rect x="20" y="40" width="6" height="12" rx="1" fill="currentColor"/>
+    <rect x="29" y="40" width="6" height="12" rx="1" fill="currentColor"/>
+    <rect x="38" y="40" width="6" height="12" rx="1" fill="currentColor"/>
+    <circle cx="32" cy="24" r="2" fill="currentColor"/>
+    <path d="M32 12V8M32 36V40M16 24H12M48 24H52" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+// Fisioterapia - Equipamentos de reabilitação
+export const PhysiotherapyIcon = ({ className = "w-16 h-16" }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="16" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <path d="M32 22V36M24 28L32 32L40 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M26 36L22 52M38 36L42 52" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M20 50H24M40 50H44" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="32" cy="32" r="3" fill="currentColor"/>
+    <path d="M28 40C28 40 30 42 32 42C34 42 36 40 36 40" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+// Estética - Equipamentos estéticos
+export const AestheticIcon = ({ className = "w-16 h-16" }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="28" r="14" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <path d="M32 14V18M32 38V42M18 28H22M42 28H46" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="32" cy="28" r="8" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <path d="M26 26L28 24M38 26L36 24M26 30L28 32M38 30L36 32" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M24 48L26 52H38L40 48" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    <rect x="26" y="42" width="12" height="6" rx="1" stroke="currentColor" strokeWidth="2" fill="none"/>
+  </svg>
+);
+
 
 export const VeterinaryIcon = ({ className = "w-16 h-16" }: { className?: string }) => (
   <svg viewBox="0 0 64 64" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
