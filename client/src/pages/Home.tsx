@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Menu, X, ArrowRight, Check, Activity, Heart, Cpu, TrendingUp, Shield, Users, Instagram, ChevronDown } from "lucide-react";
+import { Phone, Mail, MapPin, Menu, X, ArrowRight, Check, Activity, Heart, Cpu, TrendingUp, Shield, Users, Instagram, ChevronDown, Info, Wrench, Target, Package, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { APP_LOGO } from "@/const";
@@ -45,6 +45,15 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [, setLocation] = useLocation();
 
+  // Navigation items with icons
+  const navItems = [
+    { id: 'sobre', label: 'Sobre', icon: Info },
+    { id: 'servicos', label: 'Serviços', icon: Wrench },
+    { id: 'areas', label: 'Áreas', icon: Target },
+    { id: 'equipamentos', label: 'Equipamentos', icon: Package },
+    { id: 'contato', label: 'Contato', icon: MessageCircle }
+  ];
+
   const scrollToSection = (id: string) => {
     // Se for a página de equipamentos, redirecionar
     if (id === 'equipamentos') {
@@ -80,17 +89,23 @@ export default function Home() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {['sobre', 'servicos', 'areas', 'equipamentos', 'contato'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200 relative group"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
-              </button>
-            ))}
+          <nav className="hidden md:flex items-center gap-4 lg:gap-6">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="group relative flex items-center gap-2 px-4 py-2.5 text-base lg:text-lg font-bold text-gray-900 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5"
+                >
+                  <Icon className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600 group-hover:text-cyan-600 transition-colors duration-300" />
+                  <span className="group-hover:text-blue-700 transition-colors duration-300">
+                    {item.label}
+                  </span>
+                  <span className="absolute bottom-0 left-4 right-4 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </button>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-4">
@@ -116,16 +131,22 @@ export default function Home() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <nav className="md:hidden bg-white border-t border-gray-200 shadow-lg">
-            <div className="container py-4 flex flex-col gap-4">
-              {['sobre', 'servicos', 'areas', 'equipamentos', 'contato'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors text-left py-2"
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </button>
-              ))}
+            <div className="container py-4 flex flex-col gap-3">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="group flex items-center gap-3 px-4 py-3 text-base font-bold text-gray-900 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:shadow-md hover:scale-102"
+                  >
+                    <Icon className="w-5 h-5 text-blue-600 group-hover:text-cyan-600 transition-colors duration-300" />
+                    <span className="group-hover:text-blue-700 transition-colors duration-300">
+                      {item.label}
+                    </span>
+                  </button>
+                );
+              })}
               <Button
                 className="btn-shine w-full gradient-primary text-white font-bold mt-2"
                 onClick={openWhatsApp}
@@ -201,7 +222,7 @@ export default function Home() {
                 {/* Premium Stats */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 pt-8 md:pt-12">
                   {[
-                    { value: '5+', label: 'Anos de Excelência', sublabel: 'No mercado' },
+                    { value: '10+', label: 'Anos de Excelência', sublabel: 'No mercado' },
                     { value: 'ISO', label: 'Certificação', sublabel: 'Internacional' },
                     { value: '100%', label: 'Satisfação', sublabel: 'Garantida' }
                   ].map((stat, i) => (
@@ -332,7 +353,7 @@ export default function Home() {
                       </h3>
                     </div>
                     <p className="text-lg text-body body-text leading-relaxed mb-6">
-                      Liderança com formação acadêmica de excelência pela UTFPR, trazendo conhecimento técnico e científico de ponta para cada projeto. Especialização em tecnologia aplicada à saúde e metrologia avançada.
+                      Liderança com formação acadêmica de excelência pela UTFPR, trazendo conhecimento técnico e científico de ponta para cada projeto. Engenheiro em Eletrônica com ênfase em engenharia clínica e mestrado em engenharia de inovações tecnológicas. Especialização em tecnologia aplicada à saúde e metrologia avançada.
                     </p>
                     <div className="flex flex-wrap gap-3">
                       <div className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">
@@ -340,6 +361,12 @@ export default function Home() {
                       </div>
                       <div className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">
                         <span className="text-sm font-bold text-cyan-300">Pesquisa & Inovação</span>
+                      </div>
+                      <div className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">
+                        <span className="text-sm font-bold text-cyan-300">CREA-PR 196357/D</span>
+                      </div>
+                      <div className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">
+                        <span className="text-sm font-bold text-cyan-300">Eng. Clínica</span>
                       </div>
                     </div>
                   </div>
@@ -384,7 +411,7 @@ export default function Home() {
                     </AccordionTrigger>
                     <AccordionContent className="text-white/70 pb-6">
                       <p className="text-base leading-relaxed mb-4">
-                        Liderança com formação acadêmica de excelência pela UTFPR, trazendo conhecimento técnico e científico de ponta para cada projeto. Especialização em tecnologia aplicada à saúde e metrologia avançada.
+                        Liderança com formação acadêmica de excelência pela UTFPR, trazendo conhecimento técnico e científico de ponta para cada projeto. Engenheiro em Eletrônica com ênfase em engenharia clínica e mestrado em engenharia de inovações tecnológicas. Especialização em tecnologia aplicada à saúde e metrologia avançada.
                       </p>
                       <div className="flex flex-wrap gap-2">
                         <div className="px-3 py-1.5 bg-blue-500/20 rounded-full border border-blue-500/30">
@@ -392,6 +419,12 @@ export default function Home() {
                         </div>
                         <div className="px-3 py-1.5 bg-blue-500/20 rounded-full border border-blue-500/30">
                           <span className="text-xs font-bold text-cyan-300">Pesquisa & Inovação</span>
+                        </div>
+                        <div className="px-3 py-1.5 bg-blue-500/20 rounded-full border border-blue-500/30">
+                          <span className="text-xs font-bold text-cyan-300">CREA-PR 196357/D</span>
+                        </div>
+                        <div className="px-3 py-1.5 bg-blue-500/20 rounded-full border border-blue-500/30">
+                          <span className="text-xs font-bold text-cyan-300">Eng. Clínica</span>
                         </div>
                       </div>
                     </AccordionContent>
@@ -1181,13 +1214,17 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-              <img src="/logo/logorodapé.png" alt="TECHDIO Logo" className="h-14 w-auto mb-6" />
-              <p className="text-base text-white/60 font-medium leading-relaxed">
+              <img src="/logo/logorodapé.png" alt="TECHDIO Logo" className="h-20 md:h-24 w-auto mb-6" />
+              <p className="text-base text-white/60 font-medium leading-relaxed mb-4">
                 Tecnologia Integrada à Saúde
               </p>
+              <div className="space-y-2 text-sm text-white/50 mb-6">
+                <p className="font-semibold text-white/70">TECHDIO - TECNOLOGIA INTEGRADA À SAÚDE</p>
+                <p>CNPJ: 35.943.310/0001-24</p>
+              </div>
               
               {/* Redes Sociais */}
-              <div className="flex gap-4 mt-6">
+              <div className="flex gap-4">
                 <a
                   href="https://www.instagram.com/techdiotecnologia/"
                   target="_blank"
@@ -1222,9 +1259,9 @@ export default function Home() {
             <div>
               <h4 className="font-black mb-6 text-lg">Contato</h4>
               <ul className="space-y-3 text-sm text-white/60 font-medium">
-                <li><a href="tel:+5544997014422" className="hover:text-cyan-400 transition-colors">(44) 99701-4422</a></li>
+                <li><a href="tel:+5544997014422" className="hover:text-cyan-400 transition-colors">(44) 9 9701-4422</a></li>
                 <li><a href="mailto:techdio.qualidade@gmail.com" className="hover:text-cyan-400 transition-colors">techdio.qualidade@gmail.com</a></li>
-                <li className="text-white/60">Cianorte, PR</li>
+                <li className="text-white/60 leading-relaxed">Rua Padre Theobaldo Blume, 1668<br />Zona 2 - Cianorte, PR</li>
               </ul>
             </div>
             
@@ -1247,9 +1284,14 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/40">&copy; 2024 TECHDIO. Todos os direitos reservados.</p>
-            <p className="text-xs text-white/30">Desenvolvido com tecnologia de ponta</p>
+          <div className="border-t border-white/10 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
+              <div className="text-center md:text-left">
+                <p className="text-sm text-white/40 mb-1">&copy; 2024 TECHDIO - Tecnologia Integrada à Saúde. Todos os direitos reservados.</p>
+                <p className="text-xs text-white/30">CNPJ: 35.943.310/0001-24</p>
+              </div>
+              <p className="text-xs text-white/30">Desenvolvido com tecnologia de ponta</p>
+            </div>
           </div>
         </div>
       </footer>
