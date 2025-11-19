@@ -1163,7 +1163,7 @@ export default function Home() {
 
             <StaggerContainer speed="normal" className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
               {[
-                { icon: Phone, label: "Telefone", value: "(44) 99701-4422", href: "tel:+5544997014422" },
+                { icon: Phone, label: "Telefone", value: "(44) 9 9701-4422", href: "tel:+5544997014422" },
                 { icon: Mail, label: "E-mail", value: "techdio.qualidade@gmail.com", href: "mailto:techdio.qualidade@gmail.com" },
                 { icon: MapPin, label: "Localização", value: "Cianorte, Paraná", href: "#" }
               ].map((contact, i) => {
@@ -1174,12 +1174,12 @@ export default function Home() {
                       href={contact.href}
                       className="block"
                     >
-                      <div className="glass-strong elevation-2 hover:elevation-3 p-8 text-center rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 transition-all duration-500 magnetic-card group">
+                      <div className="relative bg-slate-900/80 backdrop-blur-xl p-8 text-center rounded-3xl border-2 border-white/10 hover:border-cyan-500/50 transition-all duration-500 group hover:shadow-2xl hover:shadow-cyan-500/20">
                         <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:scale-110 transition-transform">
                           <Icon className="w-8 h-8 text-white" />
                         </div>
-                        <p className="text-sm font-bold text-muted mb-2">{contact.label}</p>
-                        <p className="text-lg font-black text-primary">
+                        <p className="text-sm font-bold text-white/70 mb-2">{contact.label}</p>
+                        <p className="text-lg font-black text-white">
                           {contact.value}
                         </p>
                       </div>
