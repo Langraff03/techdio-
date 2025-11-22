@@ -14,7 +14,6 @@ interface StateProperties {
 
 interface BrazilCoverageMapProps {
   className?: string;
-  showStats?: boolean;
 }
 
 // Componente para ajustar automaticamente os bounds do mapa ao GeoJSON
@@ -43,7 +42,7 @@ function FitBoundsOnLoad({ geoData }: { geoData: FeatureCollection | null }) {
   return null;
 }
 
-export default function BrazilCoverageMap({ className = '', showStats = false }: BrazilCoverageMapProps) {
+export default function BrazilCoverageMap({ className = '' }: BrazilCoverageMapProps) {
   const [geoData, setGeoData] = useState<FeatureCollection | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -61,11 +60,11 @@ export default function BrazilCoverageMap({ className = '', showStats = false }:
       });
   }, []);
 
-  // Estilo dos estados - Azul vibrante como na referência
+  // Estilo dos estados - Azul escuro profissional
   const stateStyle = {
-    fillColor: '#03ca5dff', // Azul vibrante (blue-500)
-    fillOpacity: 0.8,
-    color: '#002e1cff', // Cyan claro para a borda (cyan-400)
+    fillColor: '#1E40AF', // Azul escuro profissional (blue-800)
+    fillOpacity: 0.85,
+    color: '#3B82F6', // Azul médio para a borda (blue-500)
     weight: 2.5,
   };
 
@@ -146,51 +145,6 @@ export default function BrazilCoverageMap({ className = '', showStats = false }:
           {/* Legenda removida conforme solicitado */}
         </div>
       </div>
-
-      {/* Stats Section - Opcional */}
-      {showStats && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          {[
-            {
-              value: '27',
-              label: 'Estados',
-              sublabel: 'Cobertura Total',
-              icon: '🗺️',
-              gradient: 'from-blue-600 to-cyan-500'
-            },
-            {
-              value: '100%',
-              label: 'Brasil',
-              sublabel: 'Território Nacional',
-              icon: '🇧🇷',
-              gradient: 'from-cyan-600 to-blue-500'
-            },
-            {
-              value: '24h',
-              label: 'Suporte',
-              sublabel: 'Disponível',
-              icon: '⚡',
-              gradient: 'from-purple-600 to-blue-500'
-            }
-          ].map((stat, i) => (
-            <div
-              key={i}
-              className="glass-medium elevation-2 hover:elevation-3 rounded-2xl p-6 border-2 border-white/10 hover:border-cyan-500/30 group transition-all duration-300 text-center"
-            >
-              <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">
-                {stat.icon}
-              </div>
-              <div className={`text-4xl md:text-5xl font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-2`}>
-                {stat.value}
-              </div>
-              <div className="text-lg font-bold text-white mb-1">{stat.label}</div>
-              <div className="text-sm text-white/60">{stat.sublabel}</div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Card de informação mobile removido conforme solicitado */}
     </div>
   );
 }
