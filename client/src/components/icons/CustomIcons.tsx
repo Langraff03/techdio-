@@ -71,6 +71,17 @@ export const IndustryIcon = ({ className = "w-16 h-16" }: { className?: string }
   </svg>
 );
 
+// Odontológico - Equipamentos odontológicos
+export const DentalIcon = ({ className = "w-16 h-16" }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28 16C28 16 24 18 24 24C24 28 24 36 26 42C27 45 28 48 30 48C31 48 32 46 32 44C32 42 32 38 32 36C32 38 32 42 32 44C32 46 33 48 34 48C36 48 37 45 38 42C40 36 40 28 40 24C40 18 36 16 36 16C34 14 30 14 28 16Z" stroke="currentColor" strokeWidth="2" fill="currentColor" opacity="0.2"/>
+    <circle cx="28" cy="20" r="2" fill="currentColor"/>
+    <circle cx="36" cy="20" r="2" fill="currentColor"/>
+    <path d="M26 28C26 28 28 30 30 30C32 30 34 28 34 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M38 28C38 28 36 30 34 30C32 30 30 28 30 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
 // Certification Badge Icons
 export const ISOBadgeIcon = ({ className = "w-12 h-12" }: { className?: string }) => (
   <svg viewBox="0 0 64 64" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">

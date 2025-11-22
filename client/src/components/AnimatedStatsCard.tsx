@@ -112,6 +112,7 @@ export default function AnimatedStatsCard({
           className="mb-4 md:mb-6 inline-flex"
           initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
           whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true }}
           transition={{
             delay: (delay / 1000) + 0.2,
             duration: 0.6,
@@ -137,6 +138,7 @@ export default function AnimatedStatsCard({
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-2 md:mb-3 tracking-tight leading-none"
           initial={{ opacity: 0, scale: 0.5 }}
           whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
           transition={{
             delay: (delay / 1000) + 0.3,
             duration: 0.8,
@@ -151,6 +153,7 @@ export default function AnimatedStatsCard({
           className="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-white mb-1 md:mb-2 leading-tight"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ delay: (delay / 1000) + 0.4, duration: 0.5 }}
         >
           {label}
@@ -161,6 +164,7 @@ export default function AnimatedStatsCard({
           className="text-sm md:text-base text-white/80 font-medium"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 0.8, y: 0 }}
+          viewport={{ once: true }}
           transition={{ delay: (delay / 1000) + 0.5, duration: 0.5 }}
         >
           {sublabel}
@@ -171,6 +175,7 @@ export default function AnimatedStatsCard({
           className="mt-4 md:mt-6 h-1 bg-white/30 rounded-full"
           initial={{ width: '4rem' }}
           whileInView={{ width: '5rem' }}
+          viewport={{ once: true }}
           whileHover={{ width: '100%', backgroundColor: 'rgba(255, 255, 255, 0.5)' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         />

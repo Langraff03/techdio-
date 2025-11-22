@@ -13,6 +13,7 @@ import AnimatedStatsCard from "@/components/AnimatedStatsCard";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import MetrologyInfoCard from "@/components/MetrologyInfoCard";
 import PartnersSection from "@/components/PartnersSection";
+import BrazilCoverageMap from "@/components/BrazilCoverageMap";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -21,6 +22,8 @@ import {
   ElectromedicalIcon,
   PhysiotherapyIcon,
   AestheticIcon,
+  IndustryIcon,
+  DentalIcon,
 } from "@/components/icons/CustomIcons";
 
 // Custom SVG Icons for services
@@ -353,7 +356,7 @@ export default function Home() {
                       </h3>
                     </div>
                     <p className="text-lg text-body body-text leading-relaxed mb-6">
-                      Liderança com formação acadêmica de excelência pela UTFPR, trazendo conhecimento técnico e científico de ponta para cada projeto. Engenheiro em Eletrônica com ênfase em engenharia clínica e mestrado em engenharia de inovações tecnológicas. Especialização em tecnologia aplicada à saúde e metrologia avançada.
+                      Liderança com formação acadêmica de excelência pela UTFPR, trazendo conhecimento técnico e científico de ponta para cada projeto. Engenheiro em Eletrônica com ênfase em engenharia clínica e mestrado em engenharia de inovações tecnológicas. Especialização em tecnologia aplicada à saúde e metrologia avançada. CREA-PR 196357/D
                     </p>
                     <div className="flex flex-wrap gap-3">
                       <div className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">
@@ -361,9 +364,6 @@ export default function Home() {
                       </div>
                       <div className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">
                         <span className="text-sm font-bold text-cyan-300">Pesquisa & Inovação</span>
-                      </div>
-                      <div className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">
-                        <span className="text-sm font-bold text-cyan-300">CREA-PR 196357/D</span>
                       </div>
                       <div className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">
                         <span className="text-sm font-bold text-cyan-300">Eng. Clínica</span>
@@ -411,7 +411,7 @@ export default function Home() {
                     </AccordionTrigger>
                     <AccordionContent className="text-white/70 pb-6">
                       <p className="text-base leading-relaxed mb-4">
-                        Liderança com formação acadêmica de excelência pela UTFPR, trazendo conhecimento técnico e científico de ponta para cada projeto. Engenheiro em Eletrônica com ênfase em engenharia clínica e mestrado em engenharia de inovações tecnológicas. Especialização em tecnologia aplicada à saúde e metrologia avançada.
+                        Liderança com formação acadêmica de excelência pela UTFPR, trazendo conhecimento técnico e científico de ponta para cada projeto. Engenheiro em Eletrônica com ênfase em engenharia clínica e mestrado em engenharia de inovações tecnológicas. Especialização em tecnologia aplicada à saúde e metrologia avançada. CREA-PR 196357/D
                       </p>
                       <div className="flex flex-wrap gap-2">
                         <div className="px-3 py-1.5 bg-blue-500/20 rounded-full border border-blue-500/30">
@@ -419,9 +419,6 @@ export default function Home() {
                         </div>
                         <div className="px-3 py-1.5 bg-blue-500/20 rounded-full border border-blue-500/30">
                           <span className="text-xs font-bold text-cyan-300">Pesquisa & Inovação</span>
-                        </div>
-                        <div className="px-3 py-1.5 bg-blue-500/20 rounded-full border border-blue-500/30">
-                          <span className="text-xs font-bold text-cyan-300">CREA-PR 196357/D</span>
                         </div>
                         <div className="px-3 py-1.5 bg-blue-500/20 rounded-full border border-blue-500/30">
                           <span className="text-xs font-bold text-cyan-300">Eng. Clínica</span>
@@ -945,8 +942,10 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            {/* Desktop: Grid 5 colunas with Stagger */}
-            <StaggerContainer speed="normal" className="hidden lg:grid lg:grid-cols-3 gap-8 max-w-[1400px] mx-auto mb-24">
+            {/* Desktop: Layout em 2 linhas - 3 cards em cima, 2 centralizados embaixo */}
+            <div className="hidden md:block w-full mb-24 px-4 lg:px-8">
+              {/* Primeira Linha: 3 cards principais */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-6">
               {[
                 {
                   title: "Eletromédicos",
@@ -1008,10 +1007,57 @@ export default function Home() {
               ].map((area, i) => (
                 <PremiumAreaCard key={i} {...area} />
               ))}
-            </StaggerContainer>
+              </div>
+
+              {/* Segunda Linha: 2 cards centralizados */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {[
+                {
+                  title: "Industriais",
+                  description: "Equipamentos industriais e instrumentos de medição de alta precisão",
+                  stats: "150+",
+                  statsLabel: "Equipamentos/Ano",
+                  badge: "Metrologia Industrial",
+                  badgeIcon: <Cpu className="w-4 h-4" />,
+                  gradient: "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)",
+                  accentColor: "#F59E0B",
+                  icon: <IndustryIcon className="w-10 h-10 text-white" />,
+                  equipment: [
+                    "Balanças e sistemas de pesagem",
+                    "Manômetros e transdutores",
+                    "Termômetros industriais",
+                    "Medidores de vazão",
+                    "Instrumentos dimensionais",
+                    "Calibradores de processo"
+                  ]
+                },
+                {
+                  title: "Odontológico",
+                  description: "Equipamentos odontológicos e sistemas de diagnóstico especializados",
+                  stats: "100+",
+                  statsLabel: "Equipamentos/Ano",
+                  badge: "Certificação Odontológica",
+                  badgeIcon: <Shield className="w-4 h-4" />,
+                  gradient: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+                  accentColor: "#10B981",
+                  icon: <DentalIcon className="w-10 h-10 text-white" />,
+                  equipment: [
+                    "Autoclaves odontológicas",
+                    "Fotopolimerizadores",
+                    "Amalgamadores",
+                    "Ultrassom odontológico",
+                    "Aparelhos de raio-X",
+                    "Compressores odontológicos"
+                  ]
+                }
+              ].map((area, i) => (
+                <PremiumAreaCard key={i} {...area} />
+              ))}
+              </div>
+            </div>
 
             {/* Mobile: Carousel */}
-            <div className="lg:hidden mb-16 px-4">
+            <div className="md:hidden mb-16 px-4">
               <Carousel
                 opts={{
                   align: "center",
@@ -1077,6 +1123,44 @@ export default function Home() {
                         "Microagulhamento",
                         "Peeling ultrassônico"
                       ]
+                    },
+                    {
+                      title: "Industriais",
+                      description: "Equipamentos industriais e instrumentos de medição de alta precisão",
+                      stats: "150+",
+                      statsLabel: "Equipamentos/Ano",
+                      badge: "Metrologia Industrial",
+                      badgeIcon: <Cpu className="w-4 h-4" />,
+                      gradient: "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)",
+                      accentColor: "#F59E0B",
+                      icon: <IndustryIcon className="w-10 h-10 text-white" />,
+                      equipment: [
+                        "Balanças e sistemas de pesagem",
+                        "Manômetros e transdutores",
+                        "Termômetros industriais",
+                        "Medidores de vazão",
+                        "Instrumentos dimensionais",
+                        "Calibradores de processo"
+                      ]
+                    },
+                    {
+                      title: "Odontológico",
+                      description: "Equipamentos odontológicos e sistemas de diagnóstico especializados",
+                      stats: "100+",
+                      statsLabel: "Equipamentos/Ano",
+                      badge: "Certificação Odontológica",
+                      badgeIcon: <Shield className="w-4 h-4" />,
+                      gradient: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+                      accentColor: "#10B981",
+                      icon: <DentalIcon className="w-10 h-10 text-white" />,
+                      equipment: [
+                        "Autoclaves odontológicas",
+                        "Fotopolimerizadores",
+                        "Amalgamadores",
+                        "Ultrassom odontológico",
+                        "Aparelhos de raio-X",
+                        "Compressores odontológicos"
+                      ]
                     }
                   ].map((area, i) => (
                     <CarouselItem key={i}>
@@ -1089,7 +1173,7 @@ export default function Home() {
                 <div className="flex items-center justify-center gap-2 mt-6">
                   <CarouselPrevious className="static translate-y-0 translate-x-0" />
                   <div className="flex gap-2">
-                    {[0, 1, 2].map((i) => (
+                    {[0, 1, 2, 3, 4].map((i) => (
                       <div key={i} className="w-2 h-2 rounded-full bg-white/30" />
                     ))}
                   </div>
@@ -1133,6 +1217,49 @@ export default function Home() {
                 <AnimatedStatsCard key={i} {...stat} delay={i * 100} />
               ))}
             </StaggerContainer>
+          </div>
+        </section>
+
+        {/* Cobertura Nacional Section - MAPA INTERATIVO */}
+        <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
+          <BackgroundPattern pattern="dots" className="opacity-5" />
+          
+          {/* Decorative orbs */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+          
+          <div className="container relative z-10">
+            <ScrollReveal>
+              <div className="text-center mb-12 md:mb-16">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl mb-8 md:mb-10 badge-glow">
+                  <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
+                  <span className="text-base font-black text-white tracking-wider uppercase">Cobertura Nacional</span>
+                </div>
+                
+                {/* Title */}
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 title-section text-primary">
+                  Atendemos em{' '}
+                  <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    Todo o Brasil
+                  </span>
+                </h2>
+                
+                <div className="w-32 h-2 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto mb-6"></div>
+                
+                {/* Subtitle */}
+                <p className="text-lg md:text-xl lg:text-2xl text-secondary max-w-3xl mx-auto body-text-large font-light px-4">
+                  Presença nacional com{' '}
+                  <span className="font-semibold text-cyan-300">logística integrada</span> para calibração e manutenção em{' '}
+                  <span className="font-semibold text-cyan-300">qualquer estado</span>
+                </p>
+              </div>
+            </ScrollReveal>
+            
+            {/* Mapa Component */}
+            <ScrollReveal delay={100}>
+              <BrazilCoverageMap showStats={true} />
+            </ScrollReveal>
           </div>
         </section>
 
@@ -1298,3 +1425,4 @@ export default function Home() {
     </div>
   );
 }
+

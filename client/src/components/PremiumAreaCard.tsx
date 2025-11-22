@@ -58,6 +58,7 @@ export default function PremiumAreaCard({
             alt={title}
             initial={{ scale: 1.1 }}
             whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: prefersReducedMotion ? 0.01 : 1.2, ease: 'easeOut' }}
             whileHover={{ scale: 1.05 }}
             style={{ willChange: 'transform' }}
@@ -106,6 +107,7 @@ export default function PremiumAreaCard({
             className="inline-flex"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <motion.div
@@ -134,6 +136,7 @@ export default function PremiumAreaCard({
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
             {title}
@@ -144,6 +147,7 @@ export default function PremiumAreaCard({
             className="flex items-baseline gap-2 md:gap-3"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
           >
             <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight">
@@ -159,6 +163,7 @@ export default function PremiumAreaCard({
             className="text-base md:text-lg lg:text-xl leading-relaxed opacity-95 font-medium"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 0.95, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             {description}
